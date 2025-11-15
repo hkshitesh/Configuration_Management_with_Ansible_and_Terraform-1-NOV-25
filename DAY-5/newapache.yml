@@ -1,0 +1,21 @@
+---
+- name: Install and restart Apache2 using command module
+  hosts: webservers
+  become: yes
+
+  tasks:
+
+    - name: Update apt repository
+      command: apt-get update -y
+
+    - name: Install apache2 package
+      command: apt-get install -y apache2
+
+    - name: Start apache2 service
+      command: systemctl start apache2
+
+    - name: Enable apache2 on boot
+      command: systemctl enable apache2
+
+    - name: Restart apache2 service
+      command: systemctl restart apache2
